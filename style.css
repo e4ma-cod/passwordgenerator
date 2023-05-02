@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Manrope:wght@200;300;400;500;600;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #0c0c0c;
+    color: #fff;
+}
+
+.container {
+    width: 30%;
+    margin-top: 100px;
+}
+
+.bg-pass {
+    background: #1e1d1d;
+}
+
+.active {
+    color: rgb(132, 240, 132);
+}
+
+.bg-pry {
+    background: rgb(132, 240, 132);
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.btn:hover,
+.btn:active {
+    border: 1px solid rgb(132, 240, 132);
+    color: rgb(132, 240, 132);
+}
+
+.bg-0 {
+    background: #0c0c0c;
+}
+
+.progressBar {
+    display: flex;
+    justify-content: space-between;
+    height: 25px;
+    width: 35%;
+}
+
+.progress {
+    width: 10px;
+    border: 1px solid #fff;
+    height: 100%;
+    transition: width 0.2s;
+    border-radius: 0;
+    background: transparent;
+}
+
+.weak {
+    background: #f00;
+}
+
+.medium {
+    background: #e0ec04;
+}
+
+.strong {
+    background: #0f0;
+}
