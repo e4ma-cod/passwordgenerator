@@ -13,8 +13,14 @@ body {
 }
 
 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;     
+}
+
+.passwordGenerator {
     width: 30%;
-    margin-top: 100px;
 }
 
 .bg-pass {
@@ -47,7 +53,7 @@ body {
     display: flex;
     justify-content: space-between;
     height: 25px;
-    width: 35%;
+    width: 40%;
 }
 
 .progress {
@@ -69,4 +75,23 @@ body {
 
 .strong {
     background: #0f0;
+}
+
+
+@media (max-width: 426px) {
+    .passwordGenerator {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 769px) and (min-width: 426px) {
+    .passwordGenerator {
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 1025px) and (min-width: 769px) {
+    .passwordGenerator {
+        width: 40% !important;
+    }
 }

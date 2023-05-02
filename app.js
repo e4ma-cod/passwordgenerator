@@ -32,10 +32,17 @@ function getPasswordStrengthClass(strength) {
     });
     console.log(progressBarArr);
 
+    function updateClass (a,b) {
+        progressBar.forEach(function updateClassList(progress) {        
+            progress.classList.remove(a, b);           
+        }); 
+    }   
+
     if (strength > 75) {
         progressBar.forEach(function updateClassStrong(progress) {
             progressText.textContent = "STRONG"
-            progress.classList.add('strong');            
+            progress.classList.add('strong'); 
+            progress.classList.remove('weak', 'medium');           
         });        
         return;
     } if (strength <= 75 && strength > 50) {
@@ -43,7 +50,8 @@ function getPasswordStrengthClass(strength) {
         progressText.textContent = "MEDIUM";        
         console.log(mediumBar);  
         mediumBar.forEach(function (medProgress) {
-            medProgress.label.classList.add('medium');
+            medProgress.label.classList.add('medium'); 
+            updateClass('weak', 'strong');                       
         })               
         return;    
     } else if (strength <= 50 && strength > 25) {
@@ -52,13 +60,15 @@ function getPasswordStrengthClass(strength) {
         console.log(medBar);  
         medBar.forEach(function (weakProgress) {
             weakProgress.label.classList.add('weak');
+            updateClass('medium', 'strong');
         })               
         return;         
     } else {
         let weakBar = progressBarArr.filter((bar) => bar.id === 1);
         progressText.textContent = "WEAK";        
         console.log(weakBar, weakBar[0].label); 
-        weakBar[0].label.classList.add('weak');        
+        weakBar[0].label.classList.add('weak');
+        updateClass('medium', 'strong');        
         return;      
     }
 }
