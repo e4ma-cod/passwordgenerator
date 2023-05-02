@@ -22,38 +22,44 @@ function getPasswordStrength(password) {
 }
 
 function getPasswordStrengthClass(strength) {
+    let progressBar = Array.from(document.querySelectorAll(".progress"));
     let progressText = document.getElementById("progressText");
-    let progressBar1 = document.getElementById("progress-one"); 
-    let progressBar2 = document.getElementById("progress-two"); 
-    let progressBar3 = document.getElementById("progress-three");
-    let progressBar4 = document.getElementById("progress-four"); 
     
+    console.log(progressBar);
+
+    let progressBarArr = progressBar.map((bar, index) => {
+        return { id: index + 1, label: bar };
+    });
+    console.log(progressBarArr);
+
     if (strength > 75) {
-        progressText.textContent = "STRONG";        
-        progressBar1.classList.add('strong');
-        progressBar2.classList.add('strong');
-        progressBar3.classList.add('strong');
-        progressBar4.classList.add('strong');
-        return;        
-    } else if (strength > 50 && strength <= 75) {
-        progressText.textContent = "MEDIUM";        
-        progressBar1.classList.add('medium');
-        progressBar2.classList.add('medium');
-        progressBar3.classList.add('medium');
-        progressBar1.classList.remove('weak', 'strong');
-        progressBar2.classList.remove('weak', 'strong'); 
-        progressBar3.classList.remove('weak', 'strong');
-        progressBar4.classList.remove('weak', 'strong');
+        progressBar.forEach(function updateClassStrong(progress) {
+            progressText.textContent = "STRONG"
+            progress.classList.add('strong');            
+        });        
         return;
-    } else {
+    } if (strength <= 75 && strength > 50) {
+        let mediumBar = progressBarArr.filter((bar) => bar.id < 4);
+        progressText.textContent = "MEDIUM";        
+        console.log(mediumBar);  
+        mediumBar.forEach(function (medProgress) {
+            medProgress.label.classList.add('medium');
+        })               
+        return;    
+    } else if (strength <= 50 && strength > 25) {
+        let medBar = progressBarArr.filter((bar) => bar.id < 3);
         progressText.textContent = "WEAK";        
-        progressBar1.classList.add('weak');
-        progressBar2.classList.add('weak');
-        progressBar1.classList.remove('medium', 'strong');
-        progressBar2.classList.remove('medium', 'strong'); 
-        progressBar3.classList.remove('medium', 'strong');
-        progressBar4.classList.remove('medium', 'strong');      
-        return ;
+        console.log(medBar);  
+        medBar.forEach(function (weakProgress) {
+            weakProgress.label.classList.add('weak');
+        })               
+        return;         
+    } else {
+        let weakBar = progressBarArr.filter((bar) => bar.id === 1);
+        progressText.textContent = "WEAK";        
+        console.log(weakBar, weakBar[0].label); 
+        weakBar[0].label.classList.add('weak');        
+        return;      
     }
 }
 
