@@ -64,11 +64,15 @@ function getPasswordStrengthClass(strength) {
         })               
         return;         
     } else {
-        let weakBar = progressBarArr.filter((bar) => bar.id === 1);
+        progressText.textContent = "WEAK"; 
+        progressBar[0].classList.add('weak');
+        updateClass('medium', 'strong');
+        progressBar[1].classList.remove('weak');
+        /*let weakBar = progressBarArr.filter((bar) => bar.id === 1);
         progressText.textContent = "WEAK";        
         console.log(weakBar, weakBar[0].label); 
         weakBar[0].label.classList.add('weak');
-        updateClass('medium', 'strong');        
+        updateClass('medium', 'strong');*/        
         return;      
     }
 }
