@@ -1,8 +1,17 @@
 let passwordDisplay = document.getElementById("password");
 let charLength = document.getElementById("charLength");
 const copyBtn = document.getElementById("copy");
+const range = document.getElementById("passwordLengthRange");
+const rangeValue = document.getElementById("passwordLengthRange");
+const genBtn = document.getElementById("generateBtn");
 
-passwordLength = parseInt(charLength.textContent);
+range.addEventListener("input", (e) => {
+    const currentValue = e.target.value;
+    charLength.innerText = currentValue;
+    passwordLength = parseInt(charLength.textContent);    
+});
+
+//passwordLength = parseInt(charLength.textContent);
 
 function getPasswordStrength(password) {
     let strength = 0;
@@ -81,6 +90,10 @@ function updateProgressBar(password) {
     const strength = getPasswordStrength(password);    
     return getPasswordStrengthClass(strength);  
 }
+
+genBtn.addEventListener('click', () => {
+    generatePassword(passwordLength);
+})
 
 function generatePassword(passwordLength) { 
     let chars = '';  
